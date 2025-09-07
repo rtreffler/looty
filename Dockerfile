@@ -28,6 +28,9 @@ RUN git clone https://github.com/jasongin/nvs "$NVS_HOME" && \
     . nvs.sh install
 RUN nvs add 8
 
+RUN mkdir /home/devel/.sbt /home/devel/.ivy2 && \
+    chown -R ${USER_ID}:${GROUP_ID} /home/devel/.sbt /home/devel/.ivy2
+
 WORKDIR /home/devel/app
 
 FROM nginx:alpine AS nginx
