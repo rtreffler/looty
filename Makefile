@@ -37,3 +37,6 @@ bash:
 
 clean:
 	rm -rf ./build ./buildffsrc ./looty/target ./project/project/target ./project/target ./target
+
+sbt:
+	${COMPOSE} run --rm builder bash -c "bin/sbt"
