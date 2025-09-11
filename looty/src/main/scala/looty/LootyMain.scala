@@ -20,7 +20,7 @@ import looty.views.WealthView
 import looty.views.XpView
 
 import scala.util.Try
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 
 //////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ class LootyApp(extensionMode: Boolean) {
   }
 }
 
-@JSExport("LootyMain")
+@JSExportTopLevel("LootyMain")
 object LootyMain {
   @JSExport
   def main() {

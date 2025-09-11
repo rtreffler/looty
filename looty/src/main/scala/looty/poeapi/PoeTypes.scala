@@ -50,6 +50,7 @@ object PoeTypes {
     var all : IVec[League] = null
   }
 
+  @js.native
   trait PassivesTree extends js.Object {
     val hashes: js.Array[Int] = js.native
   }
@@ -60,6 +61,7 @@ object PoeTypes {
     }
   }
 
+  @js.native
   trait CharacterInfo extends js.Object {
     val `class`: String = js.native
     val classId: Int = js.native
@@ -96,10 +98,12 @@ object PoeTypes {
     }
   }
 
+  @js.native
   trait ItemContainer extends js.Object {
     protected val items: js.Array[AnyItem] = js.native
   }
 
+  @js.native
   trait Inventory extends js.Object with ItemContainer {
     val character: String = js.native
 
@@ -107,6 +111,7 @@ object PoeTypes {
     val error: Optional[String] = js.native
   }
 
+  @js.native
   trait StashTab extends js.Object with ItemContainer {
     val numTabs: Int = js.native
 
@@ -116,6 +121,7 @@ object PoeTypes {
     val error: Optional[String] = js.native
   }
 
+  @js.native
   trait StashTabInfo extends js.Object {
     //Background color
     val colour: Colour = js.native
@@ -133,6 +139,7 @@ object PoeTypes {
     }
   }
 
+  @js.native
   trait Colour extends js.Object {
     val r: Int = js.native
     val g: Int = js.native
@@ -406,6 +413,7 @@ object PoeTypes {
     }
   }
 
+  @js.native
   trait AnyItem extends js.Object {
     //items id - string of 64 hex chars
     val id: String = js.native
@@ -423,7 +431,7 @@ object PoeTypes {
     //Standard, Standard Solo Self Found (SSF), Hardcore, Hardcore SSF, Temp League, Temp League SSF, Temp League Hardcore, Temp League Hardcore SSF, Private league...
     val league: String = js.native
     //Item name, except div cards has empty string ""
-    private val name: String = js.native
+    val name: String = js.native
     //Specific item type like, Vaal Regalia - ES chest
     val typeLine: String = js.native
     //Cosmetic assigned to that item
@@ -519,6 +527,7 @@ object PoeTypes {
 
   }
 
+  @js.native
   trait AdditionalProperty extends js.Object {
     val displayMode: Int = js.native
     //Experience for gem experience
@@ -529,6 +538,7 @@ object PoeTypes {
     val values: js.Array[js.Array[js.Any]] = js.native
   }
 
+  @js.native
   trait Hybrid extends js.Object { //in vaal gems Vaal part is discribed with hybrid object
     val isVaalGem: Boolean = js.native
     val baseTypeName: String = js.native
@@ -549,6 +559,7 @@ object PoeTypes {
     }
   }
 
+  @js.native
   trait Socket extends js.Object {
     val group: Int = js.native
     //used for socket groups, aka a 6 linked would have all sockets in group 0
@@ -562,18 +573,21 @@ object PoeTypes {
     }
   }
 
+  @js.native
   trait ItemProperty extends js.Object {
     val name: String = js.native
     val values: js.Array[js.Array[Any]] = js.native
     val displayMode: Int = js.native
   }
 
+  @js.native
   trait ItemRequirement extends js.Object {
     val name: Optional[String] = js.native
     val values: js.Array[js.Array[js.Array[String]]] = js.native
     val displayMode: Int = js.native
   }
 
+  @js.native
   trait Influence extends js.Object {
     val elder: Optional[Boolean] = js.native
     val shaper: Optional[Boolean] = js.native
@@ -591,6 +605,7 @@ object PoeTypes {
   //    }
 
   //TODO add to ItemHoverDetail.scala
+  @js.native
   trait Incubator extends js.Object {
     //What kind of items you will get after incubation is over, which means after you kill "total" number of monsters
     //ex. "Rare Abyss Item", "Currency Item" and others...
@@ -603,6 +618,7 @@ object PoeTypes {
     val total:Int = js.native
   }
 
+  @js.native
   trait Scourged extends js.Object {
     //1-3 for items, 1-10 for maps
     val tier: Int = js.native
@@ -612,6 +628,7 @@ object PoeTypes {
   }
 
   //TODO what items has it?
+  @js.native
   trait UltimatumMods extends js.Object {
     val `type`:String = js.native
     val tier:Int = js.native

@@ -3,6 +3,7 @@ package facades
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation.JSGlobal
 
 //////////////////////////////////////////////////////////////
 // Copyright (c) 2015 Ben Jackman, Jeff Gomberg
@@ -13,6 +14,7 @@ import scala.scalajs.js.annotation.JSName
 //////////////////////////////////////////////////////////////
 package object jailed {
 
+  @js.native
   trait Remote extends js.Object {
     def run(code: String): Unit = js.native
   }
@@ -47,7 +49,8 @@ package object jailed {
   //    })
 
 
-  @JSName("jailed.Plugin")
+  @JSGlobal("jailed.Plugin")
+  @js.native
   class Plugin(path: String, api: js.Object) extends js.Object {
     def whenConnected(f: js.Function0[Unit]): Unit = js.native
     def whenDisconnected(f: js.Function0[Unit]): Unit = js.native

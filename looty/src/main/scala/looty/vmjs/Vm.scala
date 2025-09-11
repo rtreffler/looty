@@ -3,7 +3,6 @@ package vmjs
 
 import scala.scalajs.js
 
-
 //////////////////////////////////////////////////////////////
 // Copyright (c) 2014 Ben Jackman, Jeff Gomberg
 // All Rights Reserved
@@ -21,19 +20,21 @@ object Vm {
   }
 }
 
+@js.native
 trait VmScript extends js.Object {
   def toJSON() : js.Object = js.native
 }
 
+@js.native
 trait VmRealm extends js.Object {
   val global : js.Dynamic = js.native
 }
 
+@js.native
 trait Vm extends js.Object {
   def eval(s : String) : js.Any = js.native
   def compile(s : String) : VmScript = js.native
   def run(s : VmScript) : js.Any = js.native
   def fromJSON(s : js.Object) : VmScript = js.native
   val realm : VmRealm = js.native
-
 }

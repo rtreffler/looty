@@ -19,4 +19,5 @@ object Optional {
   implicit def AToOptional[A](a : A) = a.asInstanceOf[Optional[A]]
 }
 
+@js.native
 trait Optional[+A] extends js.Object

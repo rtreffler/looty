@@ -26,6 +26,7 @@ object ModsCsvParser {
     }
   }
 
+  @js.native
   trait ModRow extends js.Object {
     val `1h Maces`          : String = js.native
     val `1h Swords and Axes`: String = js.native
