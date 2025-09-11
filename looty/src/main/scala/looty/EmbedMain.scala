@@ -1,6 +1,6 @@
 package looty
 
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 
 
 //////////////////////////////////////////////////////////////
@@ -11,7 +11,7 @@ import scala.scalajs.js.annotation.JSExport
 // Created by bjackman @ 4/21/15 10:49 PM
 //////////////////////////////////////////////////////////////
 
-@JSExport("EmbedMain")
+@JSExportTopLevel("EmbedMain")
 object EmbedMain {
 //  This goes into the manifest if desired
 //  "//content_scripts": [

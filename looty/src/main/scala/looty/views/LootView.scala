@@ -43,12 +43,14 @@ trait WebSqlResultSet {
 }
 
 
+@js.native
 trait WebSqlTransaction extends js.Object {
   def executeSql(sql: String): Unit =  js.native
   def executeSql(sql: String, values: js.Array[Any]): Unit  = js.native
   def executeSql(sql: String, values: js.Array[Any], f: js.Function2[WebSqlTransaction, WebSqlResultSet, _]): Unit  = js.native
 }
 
+@js.native
 trait WebSqlDatabase extends js.Object {
   def transaction(f: js.Function1[WebSqlTransaction, _]): Unit  = js.native
 }

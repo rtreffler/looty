@@ -20,6 +20,12 @@ build-prod: clean
 	${COMPOSE} run --rm builder bash -c "bin/sbt clean && bin/sbt fullOptJS"
 	@make restart
 
+test:
+	${COMPOSE} run --rm builder bash -c "bin/sbt test"
+
+sbt:
+	${COMPOSE} run --rm builder bash -c "bin/sbt"
+
 start:
 	${COMPOSE} up --detach nginx
 
@@ -37,6 +43,3 @@ bash:
 
 clean:
 	rm -rf ./build ./buildffsrc ./looty/target ./project/project/target ./project/target ./target
-
-sbt:
-	${COMPOSE} run --rm builder bash -c "bin/sbt"

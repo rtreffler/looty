@@ -1,7 +1,7 @@
 package looty
 package chrome
 
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation.{JSName, JSGlobal}
 import scala.scalajs.js
 import scala.concurrent.{Promise, Future}
 
@@ -49,6 +49,7 @@ object ChromeStorageLocal {
 }
 
 
+@js.native
 trait ChromeStorageLocal extends js.Object {
   val QUOTA_BYTES: Double = js.native
   def clear(): Unit = js.native
@@ -66,7 +67,8 @@ trait ChromeStorageLocal extends js.Object {
 }
 
 
-@JSName("chrome.storage")
+@JSGlobal("chrome.storage")
+@js.native
 object ChromeStorage extends js.Object {
   val local: ChromeStorageLocal = js.native
 }

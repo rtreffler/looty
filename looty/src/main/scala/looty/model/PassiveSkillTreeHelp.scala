@@ -27,6 +27,7 @@ object PassiveSkillTreeHelp {
   //var tree = JSON.parse(req.responseText)
   //JSON.stringify(tree.nodes.filter(function (n) {return n.ia + n.da + n.sa > 0} ).map(function(x){var o = ){id: x.id, s:x.sa, i:x.ia,d :x.da};return o})
 
+  @js.native
   trait PassiveBonusNode extends js.Object {
     val id: Int = js.native
     val i : Int = js.native
