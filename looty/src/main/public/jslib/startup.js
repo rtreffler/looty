@@ -1,5 +1,5 @@
 //ScalaJS.modules.example_ScalaJSExample().main();
 
 console.log("Startup.js start")
-LootyMain().main()
+LootyMain.main()
 console.log("Startup.js end")

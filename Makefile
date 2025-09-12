@@ -1,7 +1,6 @@
 # https://clarkgrubb.com/makefile-style-guide#phony-targets
 
-DOCKER_BUILD_VARS := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1
-COMPOSE := $(DOCKER_BUILD_VARS) docker compose
+COMPOSE := docker compose
 
 .PHONY: docker build-dev build-prod start restart stop destroy bash clean
 
@@ -13,12 +12,16 @@ docker: .env
 	${COMPOSE} build --no-cache
 
 build-dev: clean
-	${COMPOSE} run --rm builder bash -c "bin/sbt clean && bin/sbt fastOptJS"
-	@make restart
+	${COMPOSE} run --rm builder bash -c ". nvs.sh use 8 && bin/sbt fastOptJS"
+	@if [ -f ./looty/target/web/public/main/looty.html ]; then \
+		rm -f ./looty/target/web/public/main/looty.html; \
+	fi
 
 build-prod: clean
-	${COMPOSE} run --rm builder bash -c "bin/sbt clean && bin/sbt fullOptJS"
-	@make restart
+	${COMPOSE} run --rm builder bash -c ". nvs.sh use 8 && bin/sbt fullOptJS"
+	@if [ -f ./looty/target/web/public/main/looty-dev.html ]; then \
+		rm -f ./looty/target/web/public/main/looty-dev.html; \
+	fi
 
 test:
 	${COMPOSE} run --rm builder bash -c "bin/sbt test"
@@ -42,4 +45,16 @@ bash:
 	${COMPOSE} run --rm builder bash
 
 clean:
-	rm -rf ./build ./buildffsrc ./looty/target ./project/project/target ./project/target ./target
+	@if [ -d ./looty/target ]; then \
+  		find ./looty/target/ -mindepth 1 -maxdepth 1 -type d ! -path './looty/target/web' -exec rm -rf {} +; \
+	fi
+	@if [ -d ./looty/target/web ]; then \
+		find ./looty/target/web -mindepth 1 -maxdepth 1 -type d ! -path './looty/target/web/public' -exec rm -rf {} +; \
+	fi
+	@if [ -d ./looty/target/web/public ]; then \
+		find ./looty/target/web/public -mindepth 1 -maxdepth 1 -type d ! -path './looty/target/web/public/main' -exec rm -rf {} +; \
+	fi
+	@if [ -d ./looty/target/web/public/main ]; then \
+		find ./looty/target/web/public/main -mindepth 1 -maxdepth 1 -exec rm -rf {} +; \
+	fi
+	@rm -rf ./project/project/target ./project/target
